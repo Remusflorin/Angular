@@ -1,0 +1,8 @@
+<div *ngIf="selectedAnimal">
+  <div>ID: {{ selectedAnimal.id }}</div>
+  <div>
+    Name:
+    {{ selectedAnimal.name ? selectedAnimal.name : "This animal has no name" }}
+  </div>
+  <div>Status: {{ selectedAnimal.status }}</div>
+</div>

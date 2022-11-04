@@ -1,0 +1,46 @@
+<button type="button" class="btn btn-primary" (click)="getAnimals('available')">
+  Available animals
+</button>
+<button type="button" class="btn btn-secondary" (click)="getAnimals('pending')">
+  Pending animals
+</button>
+<button type="button" class="btn btn-danger" (click)="getAnimals('sold')">
+  Sold animals
+</button>
+
+<table *ngIf="animals | async">
+  <tr>
+    <th>Index</th>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Actions</th>
+  </tr>
+  <tr *ngFor="let animal of animals | async; let i = index">
+    <td>{{ i + 1 }}</td>
+    <td>{{ animal.name }}</td>
+    <td>{{ animal.status }}</td>
+    <td>
+      <button
+        type="button"
+        class="btn btn-dark"
+        (click)="goToView('view', animal.id)"
+      >
+        View
+      </button>
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="goToEdit('edit', animal)"
+      >
+        Edit
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger"
+        (click)="deleteAnimal(animal.id)"
+      >
+        Delete
+      </button>
+    </td>
+  </tr>
+</table>

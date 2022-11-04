@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form
+      [formGroup]="animalForm"
+      (ngSubmit)="onSubmit()"
+      class="d-flex flex-column"
+    >
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="id">ID:</label>
+            <input
+              id="id"
+              type="number"
+              formControlName="id"
+              class="form-control"
+              min="1"
+              [ngClass]="{ 'is-invalid': id?.invalid }"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name: </label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': name?.invalid }"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <span>Status</span>
+          <select name="status" id="status" formControlName="status" required>
+            <option value="available">Available</option>
+            <option value="pending">Pending</option>
+            <option value="sold">Sold</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="animalForm.invalid"
+          >
+            Save
+          </button>
+          <button type="button" class="btn btn-danger" (click)="onCancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
